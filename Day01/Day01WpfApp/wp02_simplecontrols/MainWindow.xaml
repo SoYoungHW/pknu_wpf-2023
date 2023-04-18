@@ -15,6 +15,6 @@
         <ProgressBar x:Name="PgbStep" Value="4" Width="100" Height="15" Maximum="10"/>
 
         <Image Source="Resources/image.png" Width="64"/>
-        <MediaElement Source="C:/Temp/video.mp4" Width="180" Height="100" LoadedBehavior="Play" />
+        <MediaElement Source="Resources/video.mp4" Width="180" Height="100" LoadedBehavior="Play" />
     </StackPanel>
 </Window>
