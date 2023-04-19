@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wp02_simplecontrols"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="250">
+        Title="MainWindow" Height="400" Width="250" Loaded="Window_Loaded" > 
     <StackPanel> <!--스택처럼 쌓는거(위에가 0,0)-->
         <TextBlock Text="텍스트블럭" Width="100"/> <!-- /> 다른 패널이 들어갈일 없을때 사용 -->
         <Label Content="라벨컨트롤" Width="100"/> <!--라벨은 여백을 조금 더 줌-->
@@ -15,6 +15,6 @@
         <ProgressBar x:Name="PgbStep" Value="4" Width="100" Height="15" Maximum="10"/>
 
         <Image Source="Resources/image.png" Width="64"/>
-        <MediaElement Source="Resources/video.mp4" Width="180" Height="100" LoadedBehavior="Play" />
+        <MediaElement x:Name="MediaPlayer" Source="" Width="180" Height="100" LoadedBehavior="Manual" />
     </StackPanel>
 </Window>
