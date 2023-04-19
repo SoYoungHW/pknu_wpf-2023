@@ -1,0 +1,18 @@
+﻿<Window x:Class="wp04_layout.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wp04_layout"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="400">
+    <StackPanel> <!--그리드는 사이즈 지정안하면 윈도우사이즈 그대로(부모자식관계)-->
+        <Canvas Width="50" Height="50" Background="LightBlue"> <!--사이즈안적으면 그리드사이즈를 꽉채움(상속)-->
+            <Button Width="150" Content="안녕하세요 버튼입니다" Margin="5"/> <!--캔버스보다 커도 밖으로 나감-->
+        </Canvas>
+
+        <Grid Width="50" Height="50" Background="LightBlue">
+            <Button Width="150" Content="안녕하세요 버튼입니다" Margin="5"/> <!--그리드부모의 영향을 받음-->
+        </Grid>
+    </StackPanel> <!--스택패널은 사이즈를 물려주지않음-->
+</Window>
