@@ -33,9 +33,9 @@ namespace wp02_simplecontrols
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var path = Directory.GetCurrentDirectory();
-            MediaPlayer.Source = new Uri(@"/.Resources/video.mp4", UriKind.RelativeOrAbsolute);
-            MediaPlayer.Play();
+            //var path = Directory.GetCurrentDirectory();
+            //MediaPlayer.Source = new Uri(@"/.Resources/video.mp4", UriKind.RelativeOrAbsolute);
+            //MediaPlayer.Play();
         }
     }
 }
