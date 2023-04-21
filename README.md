@@ -22,9 +22,14 @@ Windows Presentation Foundation
 	
 ## 4일차
 - WPF 응용
-	- MahApps.Metro 패턴
+	- MahApps.Metro 디자인 적용
 	- MVVM 패턴
 	- 데이터바인딩 DB연동
+	
+4일차 MVVM View
+
+<img 
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf01.png" width="800">
 	
 	
 	
