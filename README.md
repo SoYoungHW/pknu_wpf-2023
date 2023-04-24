@@ -26,7 +26,7 @@ Windows Presentation Foundation
 	- MVVM 패턴
 	
 	
-4일차 MVVM View
+<4일차 MVVM View>
 
 <img 
 src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf01.png" width="700">
@@ -36,6 +36,11 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf01
 	- MVVM 패턴
 	- MVVM Framework / caliburn
 	- 데이터바인딩 DB연동 
+	
+<5일차 MVVM View 완성>
+	
+<img 
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf.gif" width="700">	
 	
 	
 	
