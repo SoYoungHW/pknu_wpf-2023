@@ -41,6 +41,22 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf01
 	
 <img 
 src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf.gif" width="700">	
+
+## 6일차
+- WPF 응용
+	- 영화검색앱 만들기
+		- TMDB openAPI
+		- MahApps.Metro
+		- MahApps.Metro.IconPacks
+		- MahApps.Metro.Json
+
+<6일차 영화검색앱 중간>
+
+<img 
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf04.png" width="800">
+
+
+
 	
 	
 	
