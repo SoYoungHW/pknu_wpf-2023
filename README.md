@@ -54,9 +54,3 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf.g
 
 <img 
 src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf04.png" width="800">
-
-
-
-	
-	
-	
