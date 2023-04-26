@@ -53,4 +53,17 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf.g
 <6일차 영화검색앱 중간>
 
 <img 
-src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf04.png" width="800">
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf04.png" width="700">
+
+## 7일차
+- WPF 응용
+	- 영화검색앱
+		- 화면정리
+		- CefSharp.WPF
+		- youtube OpenAPI
+		- DB 데이터바인딩
+		
+<7일차 영화검색앱 중간>
+
+<img 
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf2.gif" width="700">	
