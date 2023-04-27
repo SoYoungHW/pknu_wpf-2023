@@ -61,9 +61,17 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf04
 		- 화면정리
 		- CefSharp.WPF
 		- youtube OpenAPI
-		- DB 데이터바인딩
+		- DB 데이터바인딩(SQL Server)
 		
-<7일차 영화검색앱 중간>
+## 8일차
+	- 영화검색앱 완료
+		- DB 데이터바인딩(MySQL)
+	- 미세먼지확인 앱개발
+		- MahApps.Metro
+		- 데이터포털 OpenAPI
+		- DB 데이터바인딩(MySQL)
+		
+<8일차 영화검색앱 완료>
 
 <img 
-src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf2.gif" width="700">	
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf3.gif" width="700">	

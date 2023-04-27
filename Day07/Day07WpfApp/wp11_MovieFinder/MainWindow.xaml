@@ -24,6 +24,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="80"/>
+            <RowDefinition Height="5"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0">
@@ -53,14 +54,14 @@
         </Grid>
 
         <!--데이터 그리드 영역-->
-        <DataGrid Grid.Row="1" Grid.Column="0" x:Name="GrdResult" Margin="5, 5"
+        <DataGrid Grid.Row="1" Grid.Column="0" x:Name="GrdResult" Margin="5, 10"
                   IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
                   ItemsSource="{Binding}" AutoGenerateColumns="False"
                   SelectedCellsChanged="GrdResult_SelectedCellsChanged">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Title}" Header="한글제목" FontWeight="Bold"/>
-                <DataGridTextColumn Binding="{Binding Original_Title}" Header="원제목"/>
+                <DataGridTextColumn Binding="{Binding Title}" Header="한글제목" FontWeight="Bold" Width="155"/>
+                <DataGridTextColumn Binding="{Binding Original_Title}" Header="원제목" Width="155"/>
                 <DataGridTextColumn Binding="{Binding Release_Date}" Header="개봉일자"/>
                 <DataGridTextColumn Binding="{Binding Popularity, StringFormat={}{0:0.0}}" Header="인기도">
                     <DataGridTextColumn.ElementStyle>
@@ -94,7 +95,7 @@
         
         <!--버튼 영역-->
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"> <!--옆으로 쌓이게-->
-            <Button x:Name="BtnAddFavorite" Content="즐겨찾기 추가" Margin="5, 20" FontSize="12" Height="50"
+            <Button x:Name="BtnAddFavorite" Content="즐겨찾기 추가" Margin="5, 15, 5, 30" FontSize="12" Height="50"
                     Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" Click="BtnAddFavorite_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
@@ -106,8 +107,8 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="BtnViewFavorite" Content="즐겨찾기 보기" Margin="5, 20" FontSize="12" Height="50"
-                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}">
+            <Button x:Name="BtnViewFavorite" Content="즐겨찾기 보기" Margin="5, 15, 5, 30" FontSize="12" Height="50"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" Click="BtnViewFavorite_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -118,8 +119,8 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="BtnDelFavorite" Content="즐겨찾기 삭제" Margin="5, 20" FontSize="12" Height="50" Width="130"
-                    Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}">
+            <Button x:Name="BtnDelFavorite" Content="즐겨찾기 삭제" Margin="5, 15, 5, 30" FontSize="12" Height="50" Width="130"
+                    Style="{StaticResource MahApps.Styles.Button.Dialogs.AccentHighlight}" Click="BtnDelFavorite_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -130,7 +131,7 @@
                 </Button.ContentTemplate>
             </Button>
 
-            <Button x:Name="BtnWatchTrailer" Content="예고편 보기" Margin="5, 20" FontSize="12" Height="50"
+            <Button x:Name="BtnWatchTrailer" Content="예고편 보기" Margin="5, 15, 5, 30" FontSize="12" Height="50"
                     Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" Click="BtnWatchTrailer_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
@@ -154,5 +155,11 @@
                 </Button.ContentTemplate>
             </Button>-->
         </StackPanel>
+
+        <StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10">
+            <StatusBarItem Content="Tmdb &amp; Youtube OpenAPI App"/>
+            <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
+            <StatusBarItem x:Name="StsResult"/>
+        </StatusBar>
     </Grid>
 </mah:MetroWindow>
