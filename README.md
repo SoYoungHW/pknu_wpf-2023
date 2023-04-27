@@ -64,6 +64,7 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf04
 		- DB 데이터바인딩(SQL Server)
 		
 ## 8일차
+- WPF 응용
 	- 영화검색앱 완료
 		- DB 데이터바인딩(MySQL)
 	- 미세먼지확인 앱개발

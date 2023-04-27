@@ -30,12 +30,12 @@ namespace wp11_MovieFinder
             InitializeComponent();
         }
 
-        private async void BtnNaverMovie_Click(object sender, RoutedEventArgs e)
-        {
-            await Commons.ShowMessageAsync("네이버 영화", "네이버 영화 사이트로 접속합니다.");
-        }
+        //private async void BtnNaverMovie_Click(object sender, RoutedEventArgs e)
+        //{
+        //    await Commons.ShowMessageAsync("네이버 영화", "네이버 영화 사이트로 접속합니다.");
+        //}
 
-        // 검색버튼, 네이버 API 사용 영화 검색
+        // 검색버튼, API 사용 영화 검색
         private async void BtnSearchMovie_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(TxtMovieName.Text))
@@ -73,7 +73,7 @@ namespace wp11_MovieFinder
         // 실제 검색 메서드
         private async void SearchMovie(string movieName)
         {
-            string TMDB_apiKey = "b3a43f11f114b88a79e3706ab896be97";
+            string TMDB_apiKey = "TMDB키입력";
             string enconding_movieName = HttpUtility.UrlEncode(movieName, Encoding.UTF8);
             string OpenApiUri = $@"https://api.themoviedb.org/3/search/movie?api_key={TMDB_apiKey}" +
                                 $"&language=ko-KR&page=1&include_adult=false&query={enconding_movieName}";
