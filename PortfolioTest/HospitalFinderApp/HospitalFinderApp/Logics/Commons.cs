@@ -17,5 +17,12 @@ namespace HospitalFinderApp.Logics
         {
             return await ((MetroWindow)Application.Current.MainWindow).ShowMessageAsync(title, message, style, null);
         }
+
+        // SQL 연결
+        public static readonly string connString = "Data Source=localhost;" +
+                                                   "Initial Catalog=Hospital;" +
+                                                   "Persist Security Info=True;" +
+                                                   "User ID=sa;" +
+                                                   "Password=12345";
     }
 }

@@ -6,9 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+    xmlns:cefSharp ="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
     xmlns:local="clr-namespace:HospitalFinderApp"
     mc:Ignorable="d"
-    Title="HospitalFinder App" Height="500" Width="700" MinHeight="450" MinWidth="650">
+    Title="HospitalFinder App" Height="500" Width="800" MinHeight="450" MinWidth="650" Loaded="MetroWindow_Loaded">
     <!--아이콘-->
     <mah:MetroWindow.IconTemplate>
         <DataTemplate>
@@ -19,58 +20,161 @@
     <!--전체 그리드 레이아웃 구성-->
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="450"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
         <!--검색 및 조회-->
-        <Label Grid.Row="0" Grid.Column="0" Content="부산광역시 병원/약국 조회 서비스" 
+        <Label Grid.Row="0" Grid.Column="0" Content="부산광역시 병원 조회 서비스" 
                FontSize="15" FontWeight="Bold" Margin="5"/>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-            
+
             <ComboBox x:Name="CboHospitalKind" Margin="5" Style="{StaticResource MahApps.Styles.ComboBox}"
-                      FontFamily="NanumGothic"  
-                      mah:TextBoxHelper.Watermark="의료기관 종류 선택"
+                      FontFamily="NanumGothic" Width="150" FontSize="14"
+                      mah:TextBoxHelper.Watermark="기관 선택"
                       mah:TextBoxHelper.UseFloatingWatermark="True"
-                      mah:TextBoxHelper.ClearTextButton="True">
-                      <ComboBoxItem>의원</ComboBoxItem>
-                      <ComboBoxItem>한의원</ComboBoxItem>
-                      <ComboBoxItem>치과의원</ComboBoxItem>
-                      <ComboBoxItem>상급종합병원</ComboBoxItem>
-                      <ComboBoxItem>약국</ComboBoxItem>
+                      mah:TextBoxHelper.ClearTextButton="True"
+                      KeyDown="CboHospitalKind_KeyDown">
+                <ComboBoxItem>의원</ComboBoxItem>
+                <ComboBoxItem>한의원</ComboBoxItem>
+                <ComboBoxItem>치과의원</ComboBoxItem>
+                <ComboBoxItem>상급종합병원</ComboBoxItem>
             </ComboBox>
-            
-            <Button x:Name="BtnSearchHospital" Content="조회" FontSize="15" Margin="5"
+
+            <TextBox x:Name="TxtHospitalName" FontSize="12" Margin="5"
+                     InputMethod.PreferredImeState="On"
+                     InputMethod.PreferredImeConversionMode="Native"
+                     mah:TextBoxHelper.Watermark="검색할 기관명 입력(공백가능)"
+                     mah:TextBoxHelper.UseFloatingWatermark="True"
+                     mah:TextBoxHelper.ClearTextButton="True"
+                     KeyDown="TxtHospitalName_KeyDown"/>
+
+            <Button x:Name="BtnSearchHospital" Content="조회" FontSize="13" Margin="5, 10"
                     Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" Click="BtnSearchHospital_Click">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <iconPacks:PackIconBoxIcons Kind="RegularSearchAlt2" Margin="-3, 7"/>
-                            <TextBlock Text="{Binding}" Margin="5"/>
+                            <iconPacks:PackIconBoxIcons Kind="RegularSearchAlt" Margin="-7,0,0,0"/>
+                            <TextBlock Text="{Binding}" Margin="1"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+        </StackPanel>
+
+        <!--데이터 그리드-->
+        <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" x:Name="GrdResult" Margin="10"
+                  IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
+                  ItemsSource="{Binding}" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Instit_nm}" Header="기관명" FontWeight="Bold"/>
+                <DataGridTextColumn Binding="{Binding Instit_kind}" Header="기관분류" FontWeight="Bold"/>
+                <DataGridTextColumn Binding="{Binding Zip_code}" Header="우편번호"/>
+                <DataGridTextColumn Binding="{Binding Street_nm_addr}" Header="주소" FontWeight="Bold">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Tel}" Header="전화번호">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextAlignment" Value="Right"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Monday}" Header="평일 영업시간"/>
+                <DataGridTextColumn Binding="{Binding Saturday}" Header="토요일 영업시간"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <!--지도영역--><!--
+        <Grid Grid.Row="2" Grid.Column="1">
+            <GroupBox Header="지 도" Margin="5"
+                      mah:HeaderedControlHelper.HeaderFontFamily="NanumGothic"
+                      mah:HeaderedControlHelper.HeaderFontWeight="Bold"
+                      mah:HeaderedControlHelper.HeaderFontSize="15"
+                      mah:HeaderedControlHelper.HeaderHorizontalContentAlignment="Center">
+                <Grid>
+                    <cefSharp:ChromiumWebBrowser x:Name="BrsMap" Address="https://www.naver.com"/>
+                </Grid>
+
+            </GroupBox>
+        </Grid>-->
+
+        <!--버튼영역-->
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10">
+            <Button x:Name="BtnCheckAdd" Content="즐겨찾기 추가" Click="BtnCheckAdd_Click" Margin="10, 5"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="StarCheck" Margin="0,10"/>
+                            <TextBlock Text="{Binding}" Margin="5, 10, 5, 10"/>
                         </StackPanel>
                     </DataTemplate>
                 </Button.ContentTemplate>
             </Button>
             
+            <Button Grid.Row="1" Grid.Column="1" x:Name="BtnCheckView" Content="즐겨찾기 보기" Click="BtnCheckView_Click"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" Margin="10, 5">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="Star" Margin="0,10"/>
+                            <TextBlock Text="{Binding}" Margin="5, 10, 5, 10"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button Grid.Row="1" Grid.Column="1" x:Name="BtnCheckDel" Content="즐겨찾기 삭제" Click="BtnCheckDel_Click"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" Margin="10, 5">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="Cancel" Margin="0,10"/>
+                            <TextBlock Text="{Binding}" Margin="5, 10, 5, 10"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+
+            <Button x:Name="BtnSearchMap" Content="지도 검색" Click="BtnSearchMap_Click" Margin="10, 5"
+                    Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconSimpleIcons Kind="GoogleMaps" Margin="0,10"/>
+                            <TextBlock Text="{Binding}" Margin="5, 10, 5, 10"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
+            <Button Grid.Row="1" Grid.Column="1" x:Name="BtnDetail" Content="네이버 검색" Click="BtnDetail_Click"
+                    Margin="10,5" Style="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}">
+                <Button.ContentTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconSimpleIcons Kind="Naver" Margin="0,10"/>
+                            <TextBlock Text="{Binding}" Margin="5, 10, 5, 10"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Button.ContentTemplate>
+            </Button>
         </StackPanel>
-        
-        <!--데이터 그리드-->
-        <DataGrid Grid.Row="2" Grid.Column="0" x:Name="GrdResult" Margin="5"
-                  IsReadOnly="True" Style="{StaticResource MahApps.Styles.DataGrid.Azure}"
-                  ItemsSource="{Binding}">
-            
-        </DataGrid>
-
-
 
         <!--상태바-->
-        <StatusBar Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,358,-10,-10" Grid.RowSpan="2">
+        <StatusBar Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="-10,0,-10,-10">
             <StatusBarItem Content="OpenAPI APP"/>
             <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
             <StatusBarItem x:Name="StsResult"/>
