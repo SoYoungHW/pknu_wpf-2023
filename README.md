@@ -97,4 +97,4 @@ src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf4.
 < 10일차 개인 포트폴리오 자료 >
 
 <img 
-src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf5.gif" width="800">	
+src="https://raw.githubusercontent.com/SoYoungHW/pknu_wpf-2023/main/Images/Wpf5.gif" width="700">	
