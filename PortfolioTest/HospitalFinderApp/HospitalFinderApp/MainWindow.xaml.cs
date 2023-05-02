@@ -45,7 +45,7 @@ namespace HospitalFinderApp
 
             if (string.IsNullOrEmpty(CboHospitalKind.Text))
             {
-                await Commons.ShowMessageAsync("오류", "찾고싶은 의료기관을 선택하세요");
+                await Commons.ShowMessageAsync("오류", "찾고싶은 병원을 선택하세요");
                 return;
             } // 선택안하면
 
@@ -463,8 +463,8 @@ namespace HospitalFinderApp
                                     Exam_part = Convert.ToString(row["exam_part"]),
                                     Regist_dt = Convert.ToDateTime(row["regist_dt"]),
                                     Update_dt = Convert.ToDateTime(row["update_dt"]),
-                                    Lng = Convert.ToInt32(row["lng"]),
-                                    Lat = Convert.ToInt32(row["lat"])
+                                    Lng = Convert.ToDouble(row["lng"]),
+                                    Lat = Convert.ToDouble(row["lat"])
                                 });
                             }
                             this.DataContext = hospitalInfos;

@@ -27,7 +27,7 @@ namespace HospitalFinderApp
 
         public MapWindow(double lat, double lng) : this() 
         {
-            BrsMap.Address = $"https://www.google.com/maps/place/{lat}, {lng}";
+            BrsMap.Address = $"https://www.google.com/maps/search/{lat}, {lng}";
         }
         
     }
